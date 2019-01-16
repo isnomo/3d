@@ -60,7 +60,7 @@
 
     var light;
     function initLight() {
-        scene.add(new THREE.AmbientLight(0xaaaaaa));
+        scene.add(new THREE.AmbientLight(0xcccccc));
         // scene.add(new THREE.AmbientLight(0xffffff));
 
         light = new THREE.PointLight(0xffffff, .5);
@@ -74,7 +74,7 @@
     
 
     function initModel() {
-        let scaleNum = .5
+        let scaleNum = .4
         //辅助工具  显示线
         var helper = new THREE.AxesHelper(50);
         scene.add(helper);
@@ -82,19 +82,22 @@
         
         var loader = new THREE.ColladaLoader();
         var mesh;
-        loader.load("dae/KFC/KFC.dae", function (result) {
+        loader.load("dae/cocacola/cocacola.dae", function (result) {
             // mesh = result.scene.children[0].clone();
             mesh = result.scene
             console.log(result)
             console.log(result.scene)
             // 定位
+            // mesh.translateX(-0.5);
+            // mesh.translateY(-0.5);
+            // mesh.translateZ(-1.5);
             mesh.scale.set(scaleNum, scaleNum, scaleNum);
             // mesh.position.set(-(mesh.quaternion._w * 2),0,0)
-            // mesh.position.set(-.8,-1.5,.8)
+            // mesh.position.set(-.35,-1.4,.8)
             scene.add(mesh);
             // mesh.position.set(5,5,5);
-            var geometry = new THREE.Geometry();
-            console.log(geometry)
+            // var geometry = new THREE.Geometry();
+            // console.log(geometry)
         });
         // loader.applySkin()
     }
