@@ -70,21 +70,26 @@
 
         // scene.add(light);
     }
+    
 
     function initModel() {
-
+        let scaleNum = .6
         //辅助工具  显示线
         var helper = new THREE.AxesHelper(50);
-        // scene.add(helper);
+        scene.add(helper);
+
+        var geometry = new THREE.Geometry();
+        console.log(geometry)
 
         var loader = new THREE.ColladaLoader();
-
         var mesh;
-        loader.load("LuckyStrike/luckystrike.dae", function (result) {
+        loader.load("dae/LuckyStrike/luckystrike.dae", function (result) {
             mesh = result.scene.children[0].clone();
-            // console.log(mesh)
+            console.log(result)
+            console.log(result.scene)
             // 定位
-            mesh.position.set(-1.4,-1,-0.5)
+            mesh.scale.set(scaleNum, scaleNum, scaleNum);
+            // mesh.position.set(-(result.scene.quaternion._w * 2),0,0)
             scene.add(mesh);
         });
     }
