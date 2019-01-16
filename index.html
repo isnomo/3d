@@ -79,7 +79,6 @@
         scene.add(helper);
 
         
-
         var loader = new THREE.ColladaLoader();
         var mesh;
         loader.load("dae/cocacola/cocacola.dae", function (result) {
@@ -119,8 +118,8 @@
         //是否可以缩放
         controls.enableZoom = false;
         //是否自动旋转
-        // controls.autoRotate = true;
-        // controls.autoRotateSpeed = 0.5;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2;
         //设置相机距离原点的最远距离
         controls.minDistance  = 1;
         //设置相机距离原点的最远距离
