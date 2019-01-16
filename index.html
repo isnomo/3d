@@ -60,9 +60,10 @@
 
     var light;
     function initLight() {
-        scene.add(new THREE.AmbientLight(0x999999));
+        scene.add(new THREE.AmbientLight(0xaaaaaa));
+        // scene.add(new THREE.AmbientLight(0xffffff));
 
-        light = new THREE.PointLight(0xffffff);
+        light = new THREE.PointLight(0xffffff, .5);
         light.position.set(50,50,50);
 
         //告诉平行光需要开启阴影投射
@@ -81,7 +82,7 @@
         
         var loader = new THREE.ColladaLoader();
         var mesh;
-        loader.load("dae/cocacola/cocacola.dae", function (result) {
+        loader.load("dae/KFC/KFC.dae", function (result) {
             // mesh = result.scene.children[0].clone();
             mesh = result.scene
             console.log(result)
@@ -89,12 +90,13 @@
             // 定位
             mesh.scale.set(scaleNum, scaleNum, scaleNum);
             // mesh.position.set(-(mesh.quaternion._w * 2),0,0)
-            // mesh.position.set(-.7,-1.8,.8)
+            // mesh.position.set(-.8,-1.5,.8)
             scene.add(mesh);
             // mesh.position.set(5,5,5);
             var geometry = new THREE.Geometry();
             console.log(geometry)
         });
+        // loader.applySkin()
     }
 
     //初始化性能插件
@@ -139,6 +141,7 @@
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         render();
+        // renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
 
     }
