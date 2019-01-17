@@ -74,15 +74,16 @@
     
 
     function initModel() {
+        // Heineken Jager 0.015  
         let scaleNum = .5
         //辅助工具  显示线
-        // var helper = new THREE.AxesHelper(50);
-        // scene.add(helper);
+        var helper = new THREE.AxesHelper(50);
+        scene.add(helper);
 
         
         var loader = new THREE.ColladaLoader();
         var mesh;
-        loader.load("dae/Jack Daniels/JackDaniels.dae", function (result) {
+        loader.load("dae/absolute/item.dae", function (result) {
             // mesh = result.scene.children[0].clone();
             mesh = result.scene
             console.log(result)
@@ -90,9 +91,9 @@
             // 模型居中
             let box = new THREE.Box3().setFromObject( mesh );
             console.log(box)
-            // 默认20,缩小0.5,所以设定10
+            // 默认20,缩小0.5,设定为10
             // mesh.position.set((-box.max.x - box.min.x) * 20, (-box.max.y - box.min.y) * 20,(-box.max.z - box.min.z) * 20)
-            mesh.position.set((-box.max.x - box.min.x) * 10, (-box.max.y - box.min.y) * 10,(-box.max.z - box.min.z) * 10)
+            mesh.position.set((-box.max.x - box.min.x) * scaleNum * 20, (-box.max.y - box.min.y) * scaleNum * 20,(-box.max.z - box.min.z) * scaleNum * 20)
             // 缩放
             mesh.scale.set(scaleNum, scaleNum, scaleNum);
             scene.add(mesh);
